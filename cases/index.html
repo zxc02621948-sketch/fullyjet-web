@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例總覽 | 富立傑木作裝修</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/navbar.css">
+    <link rel="stylesheet" href="../shared/footer.css">
+    <style>
+        :root { --gold: #c8a870; }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Noto Sans TC", Arial, sans-serif;
+            background:
+                radial-gradient(circle at 10% 8%, rgba(200,168,112,.18), transparent 36%),
+                radial-gradient(circle at 90% 88%, rgba(200,168,112,.12), transparent 35%),
+                linear-gradient(160deg, #fbfaf7 0%, #f4efe5 100%);
+            color: #222;
+            padding-top: 80px;
+        }
+        .hero {
+            width: min(1240px, calc(100% - 32px));
+            margin: 26px auto 0;
+        }
+        .crumb {
+            font-size: 12px;
+            color: #6f6f6f;
+            letter-spacing: .08em;
+            margin-bottom: 10px;
+        }
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(30px, 4vw, 42px);
+            letter-spacing: .08em;
+        }
+        .hero p {
+            margin: 10px 0 0;
+            color: #5a5a5a;
+            line-height: 1.75;
+        }
+
+        .layout {
+            width: min(1240px, calc(100% - 32px));
+            margin: 26px auto 52px;
+            display: grid;
+            grid-template-columns: 220px minmax(0, 1fr);
+            gap: 34px;
+        }
+        .city-nav {
+            position: sticky;
+            top: 94px;
+            align-self: start;
+            padding-left: 12px;
+            border-left: 2px solid rgba(200,168,112,.5);
+        }
+        .city-nav h2 {
+            margin: 0 0 10px;
+            font-size: 13px;
+            letter-spacing: .2em;
+            color: #3d3d3d;
+        }
+        .city-nav a {
+            display: block;
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 7px 0;
+            letter-spacing: .06em;
+        }
+        .city-nav a:hover { color: #111; }
+        .city-nav .active {
+            color: #111;
+            font-weight: 700;
+        }
+
+        .group { margin-bottom: 34px; }
+        .group h3 {
+            margin: 0 0 14px;
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: .08em;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 12px;
+        }
+        .card {
+            text-decoration: none;
+            color: inherit;
+            background: rgba(255,255,255,.62);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,.55);
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(200,168,112,.7);
+            box-shadow: 0 12px 24px rgba(0,0,0,.08);
+        }
+        .thumb {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            display: block;
+        }
+        .meta { padding: 10px 10px 12px; }
+        .meta p {
+            margin: 0;
+            font-size: 11px;
+            color: #876f43;
+            letter-spacing: .08em;
+        }
+        .meta h4 {
+            margin: 4px 0 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #242424;
+            font-weight: 500;
+        }
+        .placeholder {
+            border: 1px dashed rgba(0,0,0,.2);
+            background: rgba(255,255,255,.35);
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7a7a7a;
+            letter-spacing: .08em;
+            font-size: 13px;
+        }
+
+        @media (max-width: 980px) {
+            .layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .city-nav {
+                position: static;
+                border-left: 0;
+                border-bottom: 1px solid rgba(0,0,0,.12);
+                padding: 0 0 10px;
+            }
+            .city-nav a { display: inline-block; margin-right: 14px; }
+            .cards { grid-template-columns: repeat(2, minmax(0,1fr)); }
+        }
+        @media (max-width: 768px) {
+            body { padding-top: 64px; }
+        }
+        @media (max-width: 640px) {
+            .cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div data-fj-navbar data-root=".." data-active="overview"></div>
+
+    <section class="hero">
+        <div class="crumb">首頁 / 案例總覽</div>
+        <h1>案例總覽</h1>
+        <p>依服務地區快速瀏覽案例，先看縮圖風格，再進入單一案例查看完整施工紀錄與大圖細節。</p>
+    </section>
+
+    <div class="layout">
+        <aside class="city-nav">
+            <h2>地區分類</h2>
+            <a href="#all" class="active">全部</a>
+            <a href="#hsinchu">新竹</a>
+            <a href="#miaoli">苗栗</a>
+            <a href="#taichung">台中</a>
+            <a href="#changhua">彰化</a>
+            <a href="#nantou">南投</a>
+            <a href="#yunlin">雲林</a>
+            <a href="#chiayi">嘉義</a>
+        </aside>
+
+        <main id="all">
+            <section id="taichung" class="group">
+                <h3>台中</h3>
+                <div class="cards">
+                    <a href="./the-springs/index.html" class="card">
+                        <img src="./the-springs/img/01.jpg" alt="北屯敦富路｜寶輝 The Springs 案例封面" class="thumb">
+                        <div class="meta">
+                            <p>台中・北屯</p>
+                            <h4>北屯敦富路｜寶輝 The Springs</h4>
+                        </div>
+                    </a>
+                    <div class="placeholder">台中案例建置中</div>
+                    <div class="placeholder">台中案例建置中</div>
+                </div>
+            </section>
+
+            <section id="hsinchu" class="group">
+                <h3>新竹</h3>
+                <div class="cards"><div class="placeholder">新竹案例建置中</div></div>
+            </section>
+            <section id="miaoli" class="group">
+                <h3>苗栗</h3>
+                <div class="cards"><div class="placeholder">苗栗案例建置中</div></div>
+            </section>
+            <section id="changhua" class="group">
+                <h3>彰化</h3>
+                <div class="cards"><div class="placeholder">彰化案例建置中</div></div>
+            </section>
+            <section id="nantou" class="group">
+                <h3>南投</h3>
+                <div class="cards"><div class="placeholder">南投案例建置中</div></div>
+            </section>
+            <section id="yunlin" class="group">
+                <h3>雲林</h3>
+                <div class="cards"><div class="placeholder">雲林案例建置中</div></div>
+            </section>
+            <section id="chiayi" class="group">
+                <h3>嘉義</h3>
+                <div class="cards"><div class="placeholder">嘉義案例建置中</div></div>
+            </section>
+        </main>
+    </div>
+    <div data-fj-footer data-root=".."></div>
+    <script src="../shared/footer.js"></script>
+    <script src="../shared/navbar.js"></script>
+</body>
+</html>

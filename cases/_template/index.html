@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{案例標題}} | 富立傑木作裝修</title>
+    <style>
+        :root {
+            --gold: #c8a870;
+            --dark: #121212;
+            --muted: #8d8d8d;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Noto Sans TC", Arial, sans-serif;
+            background: #f5f0e8;
+            color: #222;
+        }
+        .topbar {
+            background: #111;
+            color: #fff;
+            padding: 14px 18px;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border-bottom: 1px solid rgba(200, 168, 112, 0.3);
+        }
+        .topbar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .brand {
+            letter-spacing: .18em;
+            font-size: 13px;
+            color: var(--gold);
+        }
+        .back-link {
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,.35);
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 36px 16px 18px;
+        }
+        .hero h1 {
+            margin: 0 0 8px;
+            font-size: clamp(24px, 4vw, 38px);
+            letter-spacing: .06em;
+        }
+        .hero p {
+            margin: 0;
+            color: #555;
+            line-height: 1.8;
+        }
+        .meta {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .chip {
+            background: #111;
+            color: var(--gold);
+            font-size: 12px;
+            padding: 6px 10px;
+            letter-spacing: .08em;
+        }
+
+        /* ====== Cinematic Gallery ====== */
+        .cinema-gallery{
+          max-width: 1100px;
+          margin: 24px auto 48px;
+          padding: 0 16px;
+        }
+        .cinema-frame{
+          position: relative;
+          border-radius: 18px;
+          overflow: hidden;
+          background: #0b0b0f;
+          box-shadow: 0 18px 60px rgba(0,0,0,.35);
+        }
+        .cinema-stage{
+          position: relative;
+          height: min(62vh, 560px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 24px 72px;
+          gap: 0;
+        }
+        .cinema-slide{
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: min(66%, 720px);
+          height: 86%;
+          border-radius: 14px;
+          overflow: hidden;
+          transition: transform .28s ease, filter .28s ease, opacity .28s ease;
+          box-shadow: 0 18px 45px rgba(0,0,0,.35);
+          background: #111;
+        }
+        .cinema-slide img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        .cinema-slide::after{
+          content:"";
+          position:absolute; inset:0;
+          background: rgba(0,0,0,.55);
+          transition: background .28s ease;
+        }
+        .pos--2 { left: 18%; transform: translate(-50%,-50%) scale(.72); opacity: .55; filter: blur(.2px); }
+        .pos--1 { left: 30%; transform: translate(-50%,-50%) scale(.84); opacity: .75; }
+        .pos-0  { left: 50%; transform: translate(-50%,-50%) scale(1);   opacity: 1;   z-index: 5; }
+        .pos-1  { left: 70%; transform: translate(-50%,-50%) scale(.84); opacity: .75; }
+        .pos-2  { left: 82%; transform: translate(-50%,-50%) scale(.72); opacity: .55; filter: blur(.2px); }
+        .pos-0::after{ background: rgba(0,0,0,.05); }
+        .cinema-nav{
+          position:absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 52px; height: 52px;
+          border-radius: 999px;
+          border: 1px solid rgba(255,255,255,.18);
+          background: rgba(0,0,0,.38);
+          color: #fff;
+          font-size: 30px;
+          line-height: 1;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          cursor:pointer;
+          z-index: 10;
+          user-select:none;
+          backdrop-filter: blur(8px);
+        }
+        .cinema-nav:hover{ background: rgba(0,0,0,.55); }
+        .cinema-nav:active{ transform: translateY(-50%) scale(.98); }
+        .cinema-nav.prev{ left: 14px; }
+        .cinema-nav.next{ right: 14px; }
+        .cinema-caption{
+          margin-top: 14px;
+          color: #111;
+        }
+        .cinema-title{
+          font-weight: 800;
+          font-size: 18px;
+        }
+        .cinema-sub{
+          opacity: .75;
+          margin-top: 4px;
+          font-size: 14px;
+        }
+        @media (max-width: 768px){
+          .cinema-stage{ height: 420px; padding: 18px 56px; }
+          .pos--2 { left: 10%; }
+          .pos--1 { left: 24%; }
+          .pos-1  { left: 76%; }
+          .pos-2  { left: 90%; }
+        }
+        .cta {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            padding: 0 16px;
+        }
+        .cta-box {
+            background: #111;
+            color: #fff;
+            border: 1px solid rgba(200,168,112,.35);
+            padding: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .cta-actions a {
+            text-decoration: none;
+            color: #111;
+            background: var(--gold);
+            padding: 10px 14px;
+            font-size: 12px;
+            letter-spacing: .08em;
+            margin-left: 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand">FULIJIE WOODWORK</div>
+            <a class="back-link" href="../../index.html">返回首頁</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>{{案例名稱，例如：北屯｜寶輝 The Springs}}</h1>
+        <p>
+            本案完工實景整理中，先提供木作 / 系統櫃施工成果與細節紀錄，後續將補上全室完工照片。
+        </p>
+    </section>
+
+    <section class="meta">
+        <span class="chip">地區：{{台中北屯}}</span>
+        <span class="chip">工項：{{木作 / 系統櫃 / 裁切對色}}</span>
+        <span class="chip">狀態：{{工法紀錄與完工精選}}</span>
+    </section>
+
+    <section class="cinema-gallery" aria-label="案例相簿（電影布幕模式）">
+      <div class="cinema-frame">
+        <button class="cinema-nav prev" type="button" aria-label="上一張">‹</button>
+        <div class="cinema-stage" id="cinemaStage" aria-live="polite"></div>
+        <button class="cinema-nav next" type="button" aria-label="下一張">›</button>
+      </div>
+      <div class="cinema-caption">
+        <div class="cinema-title" id="cinemaTitle">案例照片</div>
+        <div class="cinema-sub" id="cinemaSub">左右切換查看</div>
+      </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-box">
+            <div>想看同工法在你家空間的套用方式？可直接與陳先生預約現場估價。</div>
+            <div class="cta-actions">
+                <a href="tel:0978798915">撥打電話</a>
+                <a href="../../index.html#quote">線上估價</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+      // TODO: 改成你的案例圖片（建議放在本資料夾的 img/）
+      const images = [
+        { src: "img/01.jpg", title: "案例照片 1", sub: "完工／精選" },
+        { src: "img/02.jpg", title: "案例照片 2", sub: "完工／精選" },
+        { src: "img/03.jpg", title: "案例照片 3", sub: "工法紀錄" },
+        { src: "img/04.jpg", title: "案例照片 4", sub: "工法紀錄" },
+        { src: "img/05.jpg", title: "案例照片 5", sub: "工法紀錄" },
+      ];
+
+      const stage = document.getElementById("cinemaStage");
+      const titleEl = document.getElementById("cinemaTitle");
+      const subEl = document.getElementById("cinemaSub");
+
+      let active = 0;
+      let startX = null;
+
+      function clampIndex(i){
+        const n = images.length;
+        return (i % n + n) % n;
+      }
+
+      function render(){
+        stage.innerHTML = "";
+        const offsets = [-2, -1, 0, 1, 2];
+        offsets.forEach((off) => {
+          const idx = clampIndex(active + off);
+          const item = images[idx];
+          const slide = document.createElement("div");
+          slide.className = "cinema-slide " + (off === 0 ? "pos-0" : (off === -1 ? "pos--1" : off === -2 ? "pos--2" : off === 1 ? "pos-1" : "pos-2"));
+          slide.setAttribute("role", "button");
+          slide.setAttribute("tabindex", "0");
+          slide.setAttribute("aria-label", "查看：" + (item.title || "案例照片"));
+          slide.addEventListener("click", () => { active = idx; updateCaption(); render(); });
+          slide.addEventListener("keydown", (e) => {
+            if(e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              active = idx;
+              updateCaption();
+              render();
+            }
+          });
+          const img = document.createElement("img");
+          img.src = item.src;
+          img.alt = item.title || "案例照片";
+          img.loading = (off === 0 ? "eager" : "lazy");
+          slide.appendChild(img);
+          stage.appendChild(slide);
+        });
+        updateCaption();
+      }
+
+      function updateCaption(){
+        const item = images[active];
+        titleEl.textContent = item.title || "案例照片";
+        subEl.textContent = item.sub || "左右切換查看";
+      }
+
+      function prev(){ active = clampIndex(active - 1); render(); }
+      function next(){ active = clampIndex(active + 1); render(); }
+
+      document.querySelector(".cinema-nav.prev").addEventListener("click", prev);
+      document.querySelector(".cinema-nav.next").addEventListener("click", next);
+      window.addEventListener("keydown", (e) => {
+        if(e.key === "ArrowLeft") prev();
+        if(e.key === "ArrowRight") next();
+      });
+      stage.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener("touchend", (e) => {
+        if(startX == null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        startX = null;
+        if(Math.abs(dx) > 40){ dx > 0 ? prev() : next(); }
+      });
+
+      render();
+    </script>
+</body>
+</html>

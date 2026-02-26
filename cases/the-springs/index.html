@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北屯｜寶輝 The Springs | 富立傑木作裝修</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../shared/navbar.css">
+    <link rel="stylesheet" href="../../shared/footer.css">
+    <style>
+        :root {
+            --gold: #c8a870;
+            --dark: #121212;
+            --paper: #f7f4ee;
+            --panel: #ffffff;
+            --ink: #2a2a2a;
+            --content-max: 1200px;
+            --case-hero-image: url("./img/01.jpg");
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Noto Sans TC", Arial, sans-serif;
+            background:
+                radial-gradient(circle at 12% 6%, rgba(200,168,112,.22), transparent 36%),
+                radial-gradient(circle at 92% 92%, rgba(200,168,112,.16), transparent 34%),
+                linear-gradient(155deg, #fcfbf8 0%, #f5f1e8 55%, #f1ece2 100%);
+            color: var(--ink);
+            padding-top: 80px;
+            min-height: 100vh;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: radial-gradient(rgba(0,0,0,.06) .7px, transparent .7px);
+            background-size: 3px 3px;
+            opacity: .08;
+        }
+        .case-layout {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 26px 20px 58px;
+            display: grid;
+            grid-template-columns: 280px minmax(0, 1fr);
+            gap: 34px;
+            align-items: start;
+        }
+        .case-sidebar {
+            position: sticky;
+            top: 122px;
+            margin-top: 38px;
+            border-left: 2px solid rgba(200,168,112,.45);
+            background: transparent;
+            border-radius: 0;
+            padding: 8px 0 8px 14px;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+        .case-sidebar h2 {
+            margin: 0 0 10px;
+            font-size: 14px;
+            letter-spacing: .14em;
+            color: #2d2d2d;
+        }
+        .case-sidebar p {
+            margin: 0 0 12px;
+            font-size: 12px;
+            color: #7d7d7d;
+            line-height: 1.6;
+        }
+        .case-all-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #3e3e3e;
+            font-size: 12px;
+            letter-spacing: .12em;
+            margin: 2px 0 6px;
+            transition: color .2s ease;
+        }
+        .case-all-link::after {
+            content: "";
+            width: 24px;
+            height: 1px;
+            background: rgba(200,168,112,.8);
+        }
+        .case-all-link:hover {
+            color: #111;
+        }
+        .case-city {
+            border-top: 1px dashed rgba(0,0,0,.12);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .case-city summary {
+            cursor: pointer;
+            list-style: none;
+            font-size: 13px;
+            color: #242424;
+            font-weight: 600;
+            letter-spacing: .06em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .case-city summary::after {
+            content: "▸";
+            color: #8f8f8f;
+            transition: transform .22s ease;
+        }
+        .case-city[open] summary::after {
+            transform: rotate(90deg);
+            color: var(--gold);
+        }
+        .case-city.is-active-city summary {
+            color: #111;
+        }
+        .case-city.is-active-city summary::before {
+            content: "";
+            display: inline-block;
+            width: 18px;
+            height: 2px;
+            background: var(--gold);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .case-links {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .case-links a {
+            text-decoration: none;
+            color: #646464;
+            padding: 6px 0;
+            border-radius: 0;
+            font-size: 12px;
+            line-height: 1.45;
+            border: 0;
+            transition: color .2s ease, padding-left .2s ease;
+        }
+        .case-links a:hover {
+            color: #1a1a1a;
+            background: transparent;
+            padding-left: 6px;
+        }
+        .case-links a.is-current {
+            color: #111;
+            background: transparent;
+            font-weight: 600;
+        }
+        .case-main {
+            min-width: 0;
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+        }
+        .hero {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+        }
+        .hero-panel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            border: 0;
+            min-height: 48vh;
+            background:
+                linear-gradient(104deg, rgba(0,0,0,.58), rgba(0,0,0,.2)),
+                var(--case-hero-image) center 42%/cover no-repeat;
+            box-shadow: none;
+        }
+        .hero-panel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.18));
+            pointer-events: none;
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            padding: 54px 32px;
+            max-width: var(--content-max);
+            margin: 0 auto;
+        }
+        .crumb {
+            color: rgba(255,255,255,.72);
+            letter-spacing: .12em;
+            font-size: 12px;
+            margin-bottom: 16px;
+        }
+        .crumb span {
+            color: rgba(200,168,112,.92);
+        }
+        .hero h1 {
+            margin: 0 0 8px;
+            font-size: clamp(26px, 4vw, 40px);
+            letter-spacing: .08em;
+            color: #fff;
+            text-shadow: 0 4px 18px rgba(0,0,0,.35);
+        }
+        .hero p {
+            margin: 0;
+            color: #d2d2d2;
+            line-height: 1.8;
+        }
+        .section-label {
+            display: inline-flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 14px;
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+        }
+        .section-label::before {
+            content: "";
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .meta {
+            margin: 0;
+            padding: 22px 0 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            align-items: center;
+        }
+        .chip {
+            background: transparent;
+            color: #64593e;
+            font-size: 13px;
+            padding: 0;
+            letter-spacing: .08em;
+            border: 0;
+            box-shadow: none;
+        }
+        .chip:not(:last-child)::after {
+            content: " / ";
+            font-size: 26px;
+            font-weight: 300;
+            color: rgba(200,168,112,.72);
+            margin: 0 12px;
+            vertical-align: middle;
+        }
+
+        .cinema-gallery{
+          max-width: 100%;
+          margin: 14px 0 52px;
+          padding: 0;
+        }
+        .cinema-frame{
+          position: relative;
+          border-radius: 0;
+          overflow: hidden;
+          background:
+                radial-gradient(circle at 14% 12%, rgba(200,168,112,.26), transparent 32%),
+                radial-gradient(circle at 86% 86%, rgba(255,255,255,.1), transparent 30%),
+                linear-gradient(155deg, #161616 0%, #24201a 56%, #121212 100%);
+          border: 0;
+          box-shadow: none;
+        }
+        .cinema-frame::before {
+          content: "THE SPRINGS";
+          position: absolute;
+          right: 24px;
+          top: 18px;
+          color: rgba(255,255,255,.16);
+          font-size: 11px;
+          letter-spacing: .34em;
+          z-index: 6;
+          pointer-events: none;
+        }
+        .cinema-stage{
+          position: relative;
+          height: min(58vh, 520px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 32px 150px 16px;
+          gap: 0;
+          perspective: 1200px;
+        }
+        .cinema-slide{
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: min(52%, 620px);
+          height: 84%;
+          border-radius: 2px;
+          overflow: hidden;
+          transition: transform .45s cubic-bezier(.25,.46,.45,.94), filter .45s ease, opacity .45s ease;
+          box-shadow: 0 18px 45px rgba(0,0,0,.35);
+          background: #111;
+        }
+        .cinema-slide img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: transform .25s ease-out;
+        }
+        .cinema-slide::after{
+          content:"";
+          position:absolute; inset:0;
+          background: rgba(0,0,0,.55);
+          transition: background .28s ease;
+        }
+        .pos--2 { left: 24%; transform: translate(-50%,-50%) scale(.72) rotateY(18deg); opacity: .38; filter: blur(.6px); }
+        .pos--1 { left: 36%; transform: translate(-50%,-50%) scale(.84) rotateY(11deg); opacity: .66; }
+        .pos-0  { left: 50%; transform: translate(-50%,-50%) scale(1); opacity: 1; z-index: 5; box-shadow: 0 25px 65px rgba(0,0,0,.45);}
+        .pos-1  { left: 64%; transform: translate(-50%,-50%) scale(.84) rotateY(-11deg); opacity: .66; }
+        .pos-2  { left: 76%; transform: translate(-50%,-50%) scale(.72) rotateY(-18deg); opacity: .38; filter: blur(.6px); }
+        .pos-0::after{ background: rgba(0,0,0,.05); }
+        .cinema-stage[data-motion="next"] .pos-0 { animation: focusFromRight .38s ease; }
+        .cinema-stage[data-motion="prev"] .pos-0 { animation: focusFromLeft .38s ease; }
+        .cinema-stage[data-parallax="on"] .pos-0 img {
+          transform: scale(1.05) translate3d(var(--px, 0px), var(--py, 0px), 0);
+        }
+        .cinema-nav{
+          position:absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 52px; height: 52px;
+          border-radius: 999px;
+          border: 1px solid rgba(255,255,255,.18);
+          background: rgba(0,0,0,.38);
+          color: #fff;
+          font-size: 30px;
+          line-height: 1;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          cursor:pointer;
+          z-index: 10;
+          user-select:none;
+          backdrop-filter: blur(8px);
+          transition: all .25s ease;
+        }
+        .cinema-nav:hover{
+          background: rgba(200,168,112,.35);
+          border-color: rgba(200,168,112,.75);
+          transform: translateY(-50%) scale(1.05);
+        }
+        .cinema-nav:active{ transform: translateY(-50%) scale(.98); }
+        .cinema-nav.prev{ left: 28px; }
+        .cinema-nav.next{ right: 28px; }
+        .cinema-bottom{
+          padding: 18px 24px 22px;
+          border-top: 0;
+          background:
+              linear-gradient(180deg, rgba(255,255,255,.02) 0%, rgba(200,168,112,.12) 100%);
+        }
+        .cinema-caption{
+          margin-top: 0;
+          color: #e9e2d4;
+        }
+        .cinema-title{
+          font-weight: 800;
+          font-size: 18px;
+        }
+        .cinema-sub{
+          opacity: .8;
+          margin-top: 4px;
+          font-size: 14px;
+          color: #d0c5b0;
+        }
+        .cinema-meta {
+          margin-top: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+        }
+        .cinema-counter {
+          color: rgba(255,255,255,.7);
+          font-size: 12px;
+          letter-spacing: .15em;
+          min-width: 74px;
+          text-align: right;
+        }
+        .cinema-progress {
+          flex: 1;
+          height: 3px;
+          background: rgba(255,255,255,.2);
+          overflow: hidden;
+          position: relative;
+        }
+        .cinema-progress-fill {
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 16.666%;
+          background: linear-gradient(90deg, rgba(200,168,112,.9), rgba(255,255,255,.72));
+          transition: width .35s ease;
+        }
+        .thumb-scroller{
+          margin-top: 14px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .thumb-scroll-btn{
+          width: 34px;
+          height: 34px;
+          border: 1px solid rgba(255,255,255,.28);
+          background: rgba(0,0,0,.24);
+          color: #e8e0d1;
+          cursor: pointer;
+          transition: all .2s ease;
+          flex: 0 0 auto;
+        }
+        .thumb-scroll-btn:hover{
+          border-color: rgba(200,168,112,.75);
+          color: #fff;
+          background: rgba(200,168,112,.28);
+        }
+        .thumb-strip{
+          flex: 1;
+          min-width: 0;
+          display: flex;
+          gap: 10px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          scroll-snap-type: x proximity;
+          scrollbar-width: thin;
+          scrollbar-color: rgba(200,168,112,.5) rgba(255,255,255,.08);
+          cursor: grab;
+          padding-bottom: 4px;
+          -webkit-overflow-scrolling: touch;
+        }
+        .thumb-strip:active{
+          cursor: grabbing;
+        }
+        .thumb-strip::-webkit-scrollbar{
+          height: 6px;
+        }
+        .thumb-strip::-webkit-scrollbar-thumb{
+          background: rgba(200,168,112,.5);
+          border-radius: 999px;
+        }
+        .thumb-strip::-webkit-scrollbar-track{
+          background: rgba(255,255,255,.08);
+        }
+        .thumb{
+          position: relative;
+          flex: 0 0 160px;
+          border: 1px solid rgba(0,0,0,.15);
+          border-radius: 10px;
+          overflow: hidden;
+          padding: 0;
+          background: #f5f5f5;
+          cursor: pointer;
+          opacity: .7;
+          transform: translateY(0);
+          transition: transform .25s ease, border-color .25s ease, opacity .25s ease, box-shadow .25s ease;
+        }
+        .thumb img{
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          display: block;
+        }
+        .thumb::after{
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,.25);
+          transition: background .25s ease;
+        }
+        .thumb.is-active{
+          border-color: rgba(200,168,112,.95);
+          opacity: 1;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0,0,0,.3);
+        }
+        .thumb.is-active::after{
+          background: rgba(0,0,0,.05);
+        }
+        .thumb:hover{
+          opacity: 1;
+          border-color: rgba(200,168,112,.65);
+        }
+        @media (max-width: 768px){
+          body {
+            padding-top: 64px;
+          }
+          .case-layout {
+            padding: 14px 14px 40px;
+            grid-template-columns: 1fr;
+            gap: 14px;
+          }
+          .case-sidebar {
+            position: static;
+            top: auto;
+            margin-top: 0;
+          }
+          .hero-panel {
+            min-height: 260px;
+          }
+          .hero-inner {
+            padding: 32px 20px;
+          }
+          .meta {
+            padding: 12px 0 16px;
+          }
+          .chip {
+            font-size: 12px;
+          }
+          .chip:not(:last-child)::after {
+            font-size: 20px;
+            margin: 0 8px;
+          }
+          .cinema-gallery {
+            padding: 0;
+          }
+          .cinema-stage{ height: 390px; padding: 16px 48px 10px; }
+          .pos--2 { left: 8%; }
+          .pos--1 { left: 22%; }
+          .pos-1  { left: 78%; }
+          .pos-2  { left: 92%; }
+          .cinema-nav.prev{ left: 10px; }
+          .cinema-nav.next{ right: 10px; }
+          .cinema-bottom{
+            padding: 14px 14px 16px;
+          }
+          .thumb-scroll-btn{
+            width: 30px;
+            height: 30px;
+          }
+          .thumb-strip{
+            gap: 8px;
+          }
+          .thumb{
+            flex-basis: 128px;
+          }
+        }
+        .cta {
+            max-width: 100%;
+            margin: 0 0 24px;
+            padding: 0;
+        }
+        .cta-box {
+            background: transparent;
+            color: #252525;
+            border: 0;
+            padding: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 0;
+            box-shadow: none;
+            background-image: none;
+        }
+        .cta-actions a {
+            text-decoration: none;
+            color: #111;
+            background: var(--gold);
+            padding: 10px 14px;
+            font-size: 12px;
+            letter-spacing: .08em;
+            margin-left: 8px;
+            display: inline-block;
+        }
+        @keyframes focusFromRight {
+            from { transform: translate(-46%, -50%) scale(.97); opacity: .7; }
+            to   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+        @keyframes focusFromLeft {
+            from { transform: translate(-54%, -50%) scale(.97); opacity: .7; }
+            to   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div data-fj-navbar data-root="../.." data-active="overview"></div>
+
+    <section class="hero">
+        <div class="hero-panel">
+            <div class="hero-inner">
+                <div class="crumb">首頁 / 案例總覽 / <span>台中</span></div>
+                <div class="section-label">Portfolio Case</div>
+                <h1>北屯｜寶輝 The Springs</h1>
+                <p>
+                    北屯敦富路住宅木作整合工程，聚焦櫃體比例、板材對色與空間銜接細節，從施工節點到完工氛圍一次呈現。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="case-layout">
+    <aside class="case-sidebar" aria-label="精選案例導覽">
+        <h2>精選案例索引</h2>
+        <p>依縣市分區，快速切換不同案例。未來新增案例可直接補在對應分區。</p>
+        <a href="../index.html" class="case-all-link">案例總覽</a>
+
+        <details class="case-city">
+            <summary>新竹</summary>
+            <div class="case-links">
+                <a href="#">新竹｜案例建置中</a>
+            </div>
+        </details>
+
+        <details class="case-city">
+            <summary>苗栗</summary>
+            <div class="case-links">
+                <a href="#">苗栗｜案例建置中</a>
+            </div>
+        </details>
+
+        <details class="case-city" open>
+            <summary>台中</summary>
+            <div class="case-links">
+                <a href="./index.html" class="is-current">北屯敦富路｜寶輝 The Springs</a>
+                <a href="#">台中｜案例建置中</a>
+            </div>
+        </details>
+
+        <details class="case-city">
+            <summary>彰化</summary>
+            <div class="case-links">
+                <a href="#">彰化｜案例建置中</a>
+            </div>
+        </details>
+
+        <details class="case-city">
+            <summary>南投</summary>
+            <div class="case-links">
+                <a href="#">南投｜案例建置中</a>
+            </div>
+        </details>
+
+        <details class="case-city">
+            <summary>雲林</summary>
+            <div class="case-links">
+                <a href="#">雲林｜案例建置中</a>
+            </div>
+        </details>
+
+        <details class="case-city">
+            <summary>嘉義</summary>
+            <div class="case-links">
+                <a href="#">嘉義｜案例建置中</a>
+            </div>
+        </details>
+    </aside>
+
+    <main class="case-main">
+    <section class="meta">
+        <span class="chip">地區：台中北屯</span>
+        <span class="chip">工項：木作 / 系統櫃 / 裁切對色</span>
+        <span class="chip">狀態：工法紀錄與完工精選</span>
+    </section>
+
+    <!-- ====== Cinematic Gallery (Paste Start) ====== -->
+    <section class="cinema-gallery" aria-label="案例相簿（電影布幕模式）">
+      <div class="cinema-frame">
+        <button class="cinema-nav prev" type="button" aria-label="上一張">‹</button>
+
+        <div class="cinema-stage" id="cinemaStage" aria-live="polite">
+          <!-- JS inject slides -->
+        </div>
+
+        <button class="cinema-nav next" type="button" aria-label="下一張">›</button>
+        <div class="cinema-bottom">
+          <div class="cinema-caption">
+            <div class="cinema-title" id="cinemaTitle">案例照片</div>
+            <div class="cinema-sub" id="cinemaSub">左右切換查看</div>
+            <div class="cinema-meta">
+              <div class="cinema-progress" aria-hidden="true">
+                <div class="cinema-progress-fill" id="cinemaProgressFill"></div>
+              </div>
+              <div class="cinema-counter" id="cinemaCounter">01 / 06</div>
+            </div>
+            <div class="thumb-scroller">
+              <button type="button" class="thumb-scroll-btn" id="thumbPrevBtn" aria-label="縮圖向左捲動">‹</button>
+              <div class="thumb-strip" id="thumbStrip" aria-label="縮圖預覽列"></div>
+              <button type="button" class="thumb-scroll-btn" id="thumbNextBtn" aria-label="縮圖向右捲動">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Cinematic Gallery (Paste End) ====== -->
+
+    <section class="cta">
+        <div class="cta-box">
+            <div>想看同工法在你家空間的套用方式？可直接與陳先生預約現場估價。</div>
+            <div class="cta-actions">
+                <a href="tel:0978798915">撥打電話</a>
+                <a href="../../index.html#quote">線上估價</a>
+            </div>
+        </div>
+    </section>
+    </main>
+    </div>
+    <div data-fj-footer data-root="../.."></div>
+
+    <script>
+      const CASE_IMAGE_BASE = "./img/";
+      const images = [
+        { src: CASE_IMAGE_BASE + "01.jpg", title: "客廳木作整合", sub: "完工／精選" },
+        { src: CASE_IMAGE_BASE + "02.jpg", title: "餐廚櫃體細節", sub: "完工／精選" },
+        { src: CASE_IMAGE_BASE + "03.jpg", title: "工法節點紀錄", sub: "工法紀錄" },
+        { src: CASE_IMAGE_BASE + "04.jpg", title: "板材對色與收邊", sub: "工法紀錄" },
+        { src: CASE_IMAGE_BASE + "05.jpg", title: "全室整體氛圍", sub: "完工／精選" },
+        { src: CASE_IMAGE_BASE + "06.jpg", title: "完工整體視角", sub: "完工／精選" }
+      ];
+
+      const stage = document.getElementById("cinemaStage");
+      const titleEl = document.getElementById("cinemaTitle");
+      const subEl = document.getElementById("cinemaSub");
+      const thumbStrip = document.getElementById("thumbStrip");
+      const thumbPrevBtn = document.getElementById("thumbPrevBtn");
+      const thumbNextBtn = document.getElementById("thumbNextBtn");
+      const counterEl = document.getElementById("cinemaCounter");
+      const progressFillEl = document.getElementById("cinemaProgressFill");
+
+      let active = 0;
+      let startX = null;
+      let motionTimer = null;
+      let parallaxFrame = null;
+      let targetPX = 0;
+      let targetPY = 0;
+      let currentPX = 0;
+      let currentPY = 0;
+      let isThumbDragging = false;
+      let thumbDragStartX = 0;
+      let thumbScrollStart = 0;
+
+      function clampIndex(i){
+        const n = images.length;
+        return (i % n + n) % n;
+      }
+
+      function updateActiveCity(){
+        document.querySelectorAll(".case-city").forEach((city) => city.classList.remove("is-active-city"));
+        const current = document.querySelector(".case-links a.is-current");
+        if (!current) return;
+        const city = current.closest(".case-city");
+        if (city) city.classList.add("is-active-city");
+      }
+
+      function tickParallax(){
+        currentPX += (targetPX - currentPX) * 0.14;
+        currentPY += (targetPY - currentPY) * 0.14;
+        stage.style.setProperty("--px", currentPX.toFixed(2) + "px");
+        stage.style.setProperty("--py", currentPY.toFixed(2) + "px");
+        parallaxFrame = window.requestAnimationFrame(tickParallax);
+      }
+
+      function setMotion(dir){
+        stage.dataset.motion = dir;
+        if(motionTimer) window.clearTimeout(motionTimer);
+        motionTimer = window.setTimeout(() => {
+          stage.dataset.motion = "idle";
+        }, 420);
+      }
+
+      function render(){
+        stage.innerHTML = "";
+
+        const offsets = [-2, -1, 0, 1, 2];
+        offsets.forEach((off) => {
+          const idx = clampIndex(active + off);
+          const item = images[idx];
+
+          const slide = document.createElement("div");
+          slide.className = "cinema-slide " + (off === 0 ? "pos-0" : (off === -1 ? "pos--1" : off === -2 ? "pos--2" : off === 1 ? "pos-1" : "pos-2"));
+          slide.setAttribute("role", "button");
+          slide.setAttribute("tabindex", "0");
+          slide.setAttribute("aria-label", "查看：" + (item.title || "案例照片"));
+
+          slide.addEventListener("click", () => {
+            active = idx;
+            updateCaption();
+            render();
+          });
+          slide.addEventListener("keydown", (e) => {
+            if(e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              active = idx;
+              updateCaption();
+              render();
+            }
+          });
+
+          const img = document.createElement("img");
+          img.src = item.src;
+          img.alt = item.title || "案例照片";
+          img.loading = (off === 0 ? "eager" : "lazy");
+
+          slide.appendChild(img);
+          stage.appendChild(slide);
+        });
+
+        updateCaption();
+        updateThumbs();
+        updateActiveCity();
+      }
+
+      function updateCaption(){
+        const item = images[active];
+        titleEl.textContent = item.title || "案例照片";
+        subEl.textContent = item.sub || "左右切換查看";
+        const current = String(active + 1).padStart(2, "0");
+        const total = String(images.length).padStart(2, "0");
+        if (counterEl) counterEl.textContent = current + " / " + total;
+        if (progressFillEl) progressFillEl.style.width = (((active + 1) / images.length) * 100) + "%";
+      }
+
+      function renderThumbs(){
+        thumbStrip.innerHTML = images.map((item, idx) => (
+          '<button type="button" class="thumb' + (idx === active ? ' is-active' : '') + '" data-index="' + idx + '" aria-label="切換到第 ' + (idx + 1) + ' 張">' +
+            '<img src="' + item.src + '" alt="' + (item.title || ('案例照片 ' + (idx + 1))) + '" loading="lazy">' +
+          '</button>'
+        )).join("");
+
+        thumbStrip.querySelectorAll(".thumb").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const target = Number(btn.getAttribute("data-index"));
+            if(Number.isNaN(target) || target === active) return;
+            setMotion(target > active ? "next" : "prev");
+            active = target;
+            render();
+          });
+        });
+      }
+
+      function updateThumbs(){
+        thumbStrip.querySelectorAll(".thumb").forEach((btn, idx) => {
+          if(idx === active){
+            btn.classList.add("is-active");
+          } else {
+            btn.classList.remove("is-active");
+          }
+        });
+        const activeThumb = thumbStrip.querySelector(".thumb.is-active");
+        if (activeThumb) {
+          activeThumb.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        }
+      }
+
+      function prev(){
+        setMotion("prev");
+        active = clampIndex(active - 1);
+        render();
+      }
+      function next(){
+        setMotion("next");
+        active = clampIndex(active + 1);
+        render();
+      }
+
+      document.querySelector(".cinema-nav.prev").addEventListener("click", prev);
+      document.querySelector(".cinema-nav.next").addEventListener("click", next);
+
+      window.addEventListener("keydown", (e) => {
+        if(e.key === "ArrowLeft") prev();
+        if(e.key === "ArrowRight") next();
+      });
+
+      stage.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener("touchend", (e) => {
+        if(startX == null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        startX = null;
+        if(Math.abs(dx) > 40){
+          dx > 0 ? prev() : next();
+        }
+      });
+
+      stage.addEventListener("mousemove", (e) => {
+        const rect = stage.getBoundingClientRect();
+        const xRatio = ((e.clientX - rect.left) / rect.width) - 0.5;
+        const yRatio = ((e.clientY - rect.top) / rect.height) - 0.5;
+        targetPX = xRatio * 14;
+        targetPY = yRatio * 10;
+        stage.dataset.parallax = "on";
+      });
+      stage.addEventListener("mouseleave", () => {
+        targetPX = 0;
+        targetPY = 0;
+        stage.dataset.parallax = "off";
+      });
+
+      if (thumbPrevBtn && thumbNextBtn && thumbStrip) {
+        thumbPrevBtn.addEventListener("click", () => {
+          thumbStrip.scrollBy({ left: -260, behavior: "smooth" });
+        });
+        thumbNextBtn.addEventListener("click", () => {
+          thumbStrip.scrollBy({ left: 260, behavior: "smooth" });
+        });
+      }
+
+      thumbStrip.addEventListener("wheel", (e) => {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          e.preventDefault();
+          thumbStrip.scrollLeft += e.deltaY;
+        }
+      }, { passive: false });
+
+      thumbStrip.addEventListener("mousedown", (e) => {
+        isThumbDragging = true;
+        thumbDragStartX = e.clientX;
+        thumbScrollStart = thumbStrip.scrollLeft;
+      });
+      window.addEventListener("mousemove", (e) => {
+        if (!isThumbDragging) return;
+        const dx = e.clientX - thumbDragStartX;
+        thumbStrip.scrollLeft = thumbScrollStart - dx;
+      });
+      window.addEventListener("mouseup", () => {
+        isThumbDragging = false;
+      });
+
+      renderThumbs();
+      stage.dataset.motion = "idle";
+      stage.dataset.parallax = "off";
+      updateActiveCity();
+      tickParallax();
+      render();
+    </script>
+    <script src="../../shared/footer.js"></script>
+    <script src="../../shared/navbar.js"></script>
+</body>
+</html>
