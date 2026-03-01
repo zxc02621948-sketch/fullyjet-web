@@ -9,7 +9,7 @@
     home: root + "/index.html#hero",
     about: root + "/index.html#about",
     services: root + "/index.html#services",
-    featured: root + "/cases/index.html",
+    featured: root + "/index.html#portfolio",
     overview: root + "/cases/index.html",
     quote: root + "/index.html#quote",
     footer: root + "/index.html#footer",

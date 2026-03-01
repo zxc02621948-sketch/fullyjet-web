@@ -67,9 +67,10 @@
       </div>
       <div class="fj-float-item">
         <span class="fj-float-tip">加入 LINE</span>
-        <a class="fj-float-btn" href="${links.line}" target="_blank" rel="noopener noreferrer" aria-label="加入 LINE">
-          <svg fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/>
+        <a class="fj-float-btn fj-float-btn--line" href="${links.line}" target="_blank" rel="noopener noreferrer" aria-label="加入 LINE">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4.2c-4.25 0-7.7 3.15-7.7 7.05c0 3.34 2.53 6.14 5.93 6.85l-.56 2.62l3.06-2.28c4.04-.3 7.27-3.31 7.27-7.19c0-3.9-3.45-7.05-7.7-7.05z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <text x="12" y="12.25" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="4.7" font-weight="700" fill="currentColor">LINE</text>
           </svg>
         </a>
       </div>

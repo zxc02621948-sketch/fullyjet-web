@@ -179,6 +179,16 @@
     border-color: #c8a870;
 }
 
+.fj-float-btn--line {
+    width: 44px;
+    height: 44px;
+}
+
+.fj-float-btn--line svg {
+    width: 30px;
+    height: 30px;
+}
+
 @media (min-width: 768px) {
     .fj-footer-grid {
         grid-template-columns: 2fr 1fr 1fr;
