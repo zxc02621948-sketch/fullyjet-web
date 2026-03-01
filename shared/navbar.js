@@ -33,7 +33,7 @@
           '<li><a href="' + links.overview + '" class="' + activeClass("overview") + '">案例總覽</a></li>' +
           '<li><a href="' + links.quote + '" class="' + activeClass("quote") + '">線上估價</a></li>' +
         "</ul>" +
-        '<a href="' + links.footer + '" class="fj-contact-btn">聯絡陳先生</a>' +
+        '<a href="' + links.footer + '" class="fj-contact-btn">聯絡我們</a>' +
         '<button type="button" class="fj-mobile-toggle" id="fj-mobile-toggle" aria-label="開啟選單">☰</button>' +
       "</nav>" +
       '<div class="fj-mobile-panel" id="fj-mobile-panel">' +
@@ -42,7 +42,6 @@
         '<a href="' + links.featured + '">精選案例</a>' +
         '<a href="' + links.overview + '">案例總覽</a>' +
         '<a href="' + links.quote + '">線上估價</a>' +
-        '<a href="' + links.footer + '">聯絡陳先生</a>' +
       "</div>" +
     "</header>";
 

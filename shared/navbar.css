@@ -118,12 +118,28 @@
 }
 
 @media (max-width: 768px) {
-    .fj-site-links,
-    .fj-contact-btn {
+    .fj-site-nav {
+        gap: 10px;
+        padding: 0 14px;
+    }
+
+    .fj-site-links {
         display: none;
+    }
+
+    .fj-contact-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        padding: 7px 12px;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
     }
 
     .fj-mobile-toggle {
         display: inline-flex;
+        margin-left: 2px;
     }
 }
