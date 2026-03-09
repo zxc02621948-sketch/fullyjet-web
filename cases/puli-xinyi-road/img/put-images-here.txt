@@ -1,0 +1,10 @@
+把案例照片放在這個資料夾。
+
+建議命名：
+01.jpg
+02.jpg
+03.jpg
+...
+
+然後到 ../index.html 的 images 陣列中對應設定：
+{ src: "img/01.jpg", title: "...", sub: "..." }
