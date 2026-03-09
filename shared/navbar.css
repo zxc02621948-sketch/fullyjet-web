@@ -17,12 +17,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: 70px;
     gap: 18px;
 }
 
 .fj-site-logo img {
-    height: 32px;
+    height: 36px;
     width: auto;
     object-fit: contain;
 }
@@ -33,15 +33,16 @@
     padding: 0;
     display: flex;
     align-items: center;
-    gap: 32px;
-    font-size: 14px;
-    letter-spacing: 0.15em;
+    gap: 36px;
+    font-size: 16px;
+    letter-spacing: 0.12em;
 }
 
 .fj-site-links a {
-    color: #9ca3af;
+    color: #c8cdd6;
     text-decoration: none;
     transition: color 0.25s ease;
+    font-weight: 500;
 }
 
 .fj-site-links a:hover {
@@ -50,15 +51,17 @@
 
 .fj-site-links .is-active {
     color: #c8a870;
+    font-weight: 700;
 }
 
 .fj-contact-btn {
     border: 1px solid rgba(200, 168, 112, 0.78);
     color: #c8a870;
     text-decoration: none;
-    padding: 8px 20px;
-    font-size: 12px;
-    letter-spacing: 0.14em;
+    padding: 10px 24px;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
     transition: all 0.25s ease;
 }
 
@@ -72,7 +75,7 @@
     background: transparent;
     border: 0;
     color: #fff;
-    font-size: 24px;
+    font-size: 28px;
     line-height: 1;
     cursor: pointer;
 }
@@ -87,9 +90,11 @@
     display: block;
     color: #b8b8b8;
     text-decoration: none;
-    padding: 14px 20px;
+    padding: 16px 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     letter-spacing: 0.08em;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .fj-mobile-panel a:hover {
@@ -102,18 +107,18 @@
 
 @media (min-width: 640px) {
     .fj-site-logo img {
-        height: 40px;
+        height: 44px;
     }
 }
 
 @media (min-width: 1024px) {
     .fj-site-nav {
-        height: 80px;
+        height: 86px;
         padding: 0 40px;
     }
 
     .fj-site-logo img {
-        height: 48px;
+        height: 54px;
     }
 }
 
@@ -132,8 +137,8 @@
         align-items: center;
         justify-content: center;
         margin-left: auto;
-        padding: 7px 12px;
-        font-size: 11px;
+        padding: 8px 14px;
+        font-size: 13px;
         letter-spacing: 0.08em;
         white-space: nowrap;
     }
