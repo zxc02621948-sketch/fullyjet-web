@@ -8,6 +8,7 @@
     services: root + "/index.html#services",
     featured: root + "/cases/index.html",
     overview: root + "/cases/index.html",
+    products: root + "/products.html",
     footer: root + "/index.html#footer",
     logo: root + "/images/富立傑LOGO_250910-06.png",
     phone: "tel:0978798915",
@@ -34,7 +35,8 @@
               <li><a href="${links.services}">服務項目</a></li>
               <li><a href="${links.featured}">精選案例</a></li>
               <li><a href="${links.overview}">案例總覽</a></li>
-              <li><a href="${links.footer}">聯絡陳先生</a></li>
+              <li><a href="${links.products}">職人工藝館</a></li>
+              <li><a href="${links.footer}">聯絡我們</a></li>
             </ul>
           </section>
 

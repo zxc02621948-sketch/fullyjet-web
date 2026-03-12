@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>職人工藝館 | 元檜傑藝・職人裁切・壓克力商品</title>
+    <meta name="description" content="職人工藝館匯集元檜傑藝精品中心、職人裁切、壓克力商品，提供風格選品、尺寸客製與材料應用提案。">
+    <link rel="icon" type="image/png" href="./images/網頁LOGO.png">
+    <link rel="apple-touch-icon" href="./images/網頁LOGO.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./shared/navbar.css">
+    <link rel="stylesheet" href="./shared/footer.css">
+    <style>
+        :root {
+            --gallery-bg: #f6f4ef;
+            --gallery-ink: #17202a;
+            --gallery-muted: #5f6b76;
+            --gallery-line: rgba(23, 32, 42, 0.12);
+            --gallery-gold: #c68b3f;
+            --gallery-green: #9ab08c;
+            --gallery-blue: #b6d0d8;
+            --gallery-card: rgba(255, 255, 255, 0.84);
+            --gallery-shadow: 0 22px 60px rgba(28, 33, 41, 0.12);
+            --gallery-hero-image: url("./images/品牌門面.png");
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Noto Sans TC", sans-serif;
+            color: var(--gallery-ink);
+            background:
+                radial-gradient(circle at top left, rgba(198, 139, 63, 0.18), transparent 26rem),
+                radial-gradient(circle at right 18% top 20%, rgba(154, 176, 140, 0.16), transparent 24rem),
+                linear-gradient(180deg, #fbfaf7 0%, #f2efe8 100%);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .gallery-page {
+            padding-top: 0;
+        }
+
+        .gallery-shell {
+            width: min(1240px, calc(100vw - 32px));
+            margin: 0 auto;
+        }
+
+        .gallery-hero {
+            position: relative;
+            min-height: 100vh;
+            padding: 112px 0 56px;
+            overflow: hidden;
+        }
+
+        .gallery-hero-media {
+            position: absolute;
+            inset: 0;
+            background-image: var(--gallery-hero-image);
+            background-size: cover;
+            background-position: center 32%;
+            background-repeat: no-repeat;
+            filter: saturate(0.96) contrast(1.02) brightness(0.76);
+            transform: scale(1.01);
+            pointer-events: none;
+        }
+
+        .gallery-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(34, 18, 8, 0.78) 0%, rgba(71, 44, 21, 0.68) 34%, rgba(140, 102, 63, 0.44) 64%, rgba(225, 209, 188, 0.22) 100%),
+                linear-gradient(180deg, rgba(18, 10, 4, 0.18) 0%, rgba(18, 10, 4, 0.28) 100%);
+            backdrop-filter: blur(2px);
+            pointer-events: none;
+        }
+
+        .gallery-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 18% 24%, rgba(255, 232, 202, 0.18), transparent 0 18rem),
+                linear-gradient(110deg, rgba(255, 255, 255, 0.04) 0%, transparent 28%, transparent 72%, rgba(255, 255, 255, 0.08) 100%),
+                repeating-linear-gradient(100deg, rgba(255, 255, 255, 0.05) 0 10px, rgba(255, 255, 255, 0.012) 10px 24px);
+            mix-blend-mode: screen;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .gallery-hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 28px;
+            align-items: stretch;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-copy,
+        .intro-card,
+        .section-card,
+        .product-card,
+        .service-card {
+            background: var(--gallery-card);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            box-shadow: var(--gallery-shadow);
+            backdrop-filter: blur(16px);
+        }
+
+        .hero-copy {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            padding: 48px 0 42px;
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+
+        .hero-copy::before {
+            content: none;
+        }
+
+        .hero-copy::after {
+            content: "";
+            position: absolute;
+            inset: auto auto -48px -42px;
+            width: 380px;
+            height: 160px;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(255, 222, 177, 0.18), transparent 70%);
+            filter: blur(10px);
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gallery-gold);
+            margin-bottom: 18px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        .hero-copy h1 {
+            position: relative;
+            margin: 0;
+            font-size: clamp(2.7rem, 6vw, 5rem);
+            line-height: 1.02;
+            letter-spacing: 0.08em;
+            color: #fffaf1;
+            text-shadow: 0 8px 28px rgba(52, 31, 15, 0.28);
+        }
+
+        .hero-copy p {
+            position: relative;
+            margin: 22px 0 0;
+            max-width: 50rem;
+            font-size: 1.08rem;
+            line-height: 1.9;
+            color: rgba(255, 245, 230, 0.84);
+            text-shadow: 0 4px 16px rgba(43, 24, 10, 0.18);
+        }
+
+        .hero-meta-row {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+            max-width: 52rem;
+        }
+
+        .hero-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            min-height: 38px;
+            padding: 0 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 247, 233, 0.15);
+            background: rgba(255, 245, 228, 0.08);
+            color: rgba(255, 245, 230, 0.9);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-actions {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px;
+            margin-top: 32px;
+            padding-bottom: 10px;
+        }
+
+        .hero-btn,
+        .chip-link,
+        .section-action,
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .hero-btn {
+            min-height: 54px;
+            padding: 0 22px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+            flex: 0 0 auto;
+            max-width: 100%;
+        }
+
+        .hero-btn.primary {
+            background: #fff6ea;
+            color: #503118;
+            box-shadow: 0 10px 26px rgba(31, 18, 9, 0.18);
+        }
+
+        .hero-btn.secondary {
+            border-color: rgba(255, 244, 227, 0.26);
+            background: rgba(40, 24, 12, 0.18);
+            color: #fff7eb;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-btn:hover,
+        .chip-link:hover,
+        .section-action:hover,
+        .product-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .gallery-intro {
+            padding: 14px 0 14px;
+        }
+
+        .intro-card {
+            border-radius: 28px;
+            padding: 28px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.88)),
+                linear-gradient(90deg, rgba(198, 139, 63, 0.1), transparent 36%);
+        }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .chip-link {
+            min-height: 48px;
+            padding: 0 18px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(23, 32, 42, 0.12);
+            font-size: 0.96rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .gallery-sections {
+            padding: 28px 0 84px;
+            display: grid;
+            gap: 32px;
+        }
+
+        .section-card {
+            border-radius: 34px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.95;
+        }
+
+        .section-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-card--hinoki {
+            background:
+                linear-gradient(180deg, rgba(255, 248, 239, 0.9), rgba(248, 239, 224, 0.92)),
+                linear-gradient(135deg, rgba(178, 128, 79, 0.12), transparent 48%);
+        }
+
+        .section-card--hinoki::before {
+            background:
+                repeating-linear-gradient(98deg, rgba(123, 79, 42, 0.05) 0 14px, rgba(221, 193, 156, 0.18) 14px 32px, rgba(255, 247, 235, 0.08) 32px 56px),
+                radial-gradient(circle at top right, rgba(196, 146, 90, 0.18), transparent 28rem);
+        }
+
+        .section-card--cutting {
+            color: #f4f7fa;
+            background:
+                linear-gradient(180deg, rgba(29, 35, 42, 0.96), rgba(47, 54, 63, 0.94)),
+                linear-gradient(135deg, rgba(118, 139, 158, 0.18), transparent 40%);
+        }
+
+        .section-card--cutting::before {
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at top right, rgba(130, 170, 208, 0.18), transparent 24rem);
+            background-size: 28px 28px, 28px 28px, auto;
+        }
+
+        .section-card--acrylic {
+            background:
+                linear-gradient(180deg, rgba(248, 254, 255, 0.92), rgba(235, 247, 255, 0.9)),
+                linear-gradient(135deg, rgba(126, 208, 244, 0.12), rgba(214, 233, 255, 0.05));
+        }
+
+        .section-card--acrylic::before {
+            background:
+                linear-gradient(120deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.08) 34%, rgba(162, 214, 255, 0.18) 60%, rgba(255, 255, 255, 0.5) 100%),
+                radial-gradient(circle at top left, rgba(151, 212, 255, 0.24), transparent 24rem);
+            mix-blend-mode: screen;
+        }
+
+        .section-card--contact {
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 246, 242, 0.92)),
+                linear-gradient(135deg, rgba(198, 139, 63, 0.08), transparent 44%);
+        }
+
+        .section-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: end;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            letter-spacing: 0.06em;
+        }
+
+        .section-head p {
+            margin: 10px 0 0;
+            color: var(--gallery-muted);
+            line-height: 1.9;
+            max-width: 42rem;
+            font-size: 1rem;
+        }
+
+        .section-action {
+            min-height: 50px;
+            padding: 0 18px;
+            border-radius: 999px;
+            background: var(--gallery-ink);
+            color: #fff;
+            font-size: 0.96rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+        }
+
+        .section-card--hinoki .section-action {
+            background: #6d4722;
+        }
+
+        .section-card--cutting .section-head p,
+        .section-card--cutting .service-card p,
+        .section-card--cutting .service-points li,
+        .section-card--cutting .process-step span {
+            color: rgba(236, 241, 247, 0.78);
+        }
+
+        .section-card--cutting .section-head h2,
+        .section-card--cutting .service-card h3,
+        .section-card--cutting .process-step strong {
+            color: #ffffff;
+        }
+
+        .section-card--cutting .eyebrow,
+        .section-card--cutting .service-pill {
+            color: #bfdaf0;
+        }
+
+        .section-card--cutting .section-action {
+            background: #d8e6f2;
+            color: #1c2630;
+        }
+
+        .section-card--acrylic .section-action {
+            background: linear-gradient(135deg, #8ccae7, #5f8fe6);
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .product-card,
+        .service-card {
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .product-thumb {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(135deg, #ecddc3, #f8f4ee);
+            overflow: hidden;
+        }
+
+        .product-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-thumb-badge {
+            position: absolute;
+            left: 14px;
+            top: 14px;
+            display: inline-flex;
+            align-items: center;
+            min-height: 32px;
+            padding: 0 10px;
+            border-radius: 999px;
+            background: rgba(17, 17, 17, 0.72);
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .product-body {
+            padding: 20px;
+        }
+
+        .section-card--hinoki .product-card {
+            background:
+                linear-gradient(180deg, rgba(255, 253, 248, 0.92), rgba(249, 242, 232, 0.94));
+            border: 1px solid rgba(128, 89, 50, 0.14);
+        }
+
+        .product-body h3 {
+            margin: 0 0 10px;
+            font-size: 1.12rem;
+            line-height: 1.5;
+        }
+
+        .product-body p {
+            margin: 0;
+            color: var(--gallery-muted);
+            line-height: 1.85;
+            font-size: 0.96rem;
+        }
+
+        .product-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 16px 0 18px;
+        }
+
+        .product-meta span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 32px;
+            padding: 0 10px;
+            border-radius: 999px;
+            background: rgba(23, 32, 42, 0.06);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--gallery-muted);
+        }
+
+        .section-card--hinoki .product-meta span {
+            background: rgba(109, 71, 34, 0.08);
+            color: #7b522f;
+        }
+
+        .product-link {
+            min-height: 46px;
+            padding: 0 16px;
+            border-radius: 14px;
+            background: rgba(23, 32, 42, 0.06);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .section-card--hinoki .product-link {
+            background: rgba(109, 71, 34, 0.1);
+            color: #6d4722;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .service-card {
+            padding: 22px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .section-card--cutting .service-card {
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(188, 217, 241, 0.12);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        .section-card--acrylic .service-card,
+        .section-card--contact .service-card {
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.5));
+            border: 1px solid rgba(125, 185, 230, 0.16);
+            backdrop-filter: blur(12px);
+        }
+
+        .service-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            width: fit-content;
+            padding: 0 12px;
+            border-radius: 999px;
+            background: rgba(198, 139, 63, 0.14);
+            color: var(--gallery-gold);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+        }
+
+        .section-card--acrylic .service-pill,
+        .section-card--contact .service-pill {
+            background: rgba(95, 143, 230, 0.12);
+            color: #4f7fd4;
+        }
+
+        .service-card h3 {
+            margin: 0;
+            font-size: 1.18rem;
+        }
+
+        .service-card p {
+            margin: 0;
+            color: var(--gallery-muted);
+            line-height: 1.85;
+            font-size: 0.96rem;
+        }
+
+        .service-points {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .service-points li {
+            position: relative;
+            padding-left: 18px;
+            color: var(--gallery-muted);
+            line-height: 1.75;
+        }
+
+        .service-points li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.78em;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gallery-gold);
+            transform: translateY(-50%);
+        }
+
+        .section-card--cutting .service-points li::before {
+            background: #a8cbeb;
+            box-shadow: 0 0 0 4px rgba(168, 203, 235, 0.08);
+        }
+
+        .section-card--acrylic .service-points li::before,
+        .section-card--contact .service-points li::before {
+            background: linear-gradient(135deg, #7fd4f4, #8a8dff);
+            box-shadow: 0 0 0 4px rgba(127, 212, 244, 0.12);
+        }
+
+        .process-strip {
+            margin-top: 22px;
+            padding: 18px;
+            border-radius: 22px;
+            border: 1px dashed rgba(23, 32, 42, 0.16);
+            background: rgba(255, 255, 255, 0.55);
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .section-card--cutting .process-strip {
+            border-color: rgba(194, 217, 235, 0.24);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .process-step {
+            border-radius: 18px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid rgba(23, 32, 42, 0.08);
+        }
+
+        .section-card--cutting .process-step {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(194, 217, 235, 0.12);
+        }
+
+        .process-step strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.94rem;
+        }
+
+        .process-step span {
+            display: block;
+            color: var(--gallery-muted);
+            line-height: 1.7;
+            font-size: 0.9rem;
+        }
+
+        .gallery-note {
+            margin-top: 22px;
+            color: var(--gallery-muted);
+            font-size: 0.93rem;
+            line-height: 1.8;
+        }
+
+        .hero-wood-strip {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 28px;
+            max-width: 66rem;
+        }
+
+        .wood-swatch {
+            min-height: 104px;
+            border-radius: 20px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff8ed;
+            text-decoration: none;
+            border: 1px solid rgba(255, 250, 240, 0.14);
+            box-shadow: 0 12px 30px rgba(43, 24, 10, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            position: relative;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .wood-swatch {
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .wood-swatch::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        .wood-swatch::after {
+            content: "↗";
+            position: absolute;
+            right: 16px;
+            top: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            color: rgba(255, 247, 235, 0.72);
+        }
+
+        .wood-swatch:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 46px rgba(43, 24, 10, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .wood-swatch strong {
+            display: block;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wood-swatch span {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(255, 247, 235, 0.88);
+            position: relative;
+            z-index: 1;
+        }
+
+        .wood-swatch-sr {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .wood-swatch--light {
+            background:
+                linear-gradient(135deg, rgba(72, 42, 18, 0.99) 0%, rgba(112, 70, 32, 0.97) 32%, rgba(166, 113, 60, 0.94) 68%, rgba(214, 163, 103, 0.9) 100%);
+            box-shadow:
+                0 14px 34px rgba(56, 30, 10, 0.18),
+                inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        }
+
+        .wood-swatch--light::before {
+            background:
+                linear-gradient(135deg, rgba(0, 0, 0, 0.34) 0%, rgba(0, 0, 0, 0.18) 38%, rgba(0, 0, 0, 0.1) 62%, rgba(0, 0, 0, 0.26) 100%),
+                radial-gradient(circle at 14% 20%, rgba(255, 225, 173, 0.16), transparent 0 6rem),
+                linear-gradient(96deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 214, 153, 0.12) 16%, rgba(120, 70, 29, 0.03) 36%, rgba(63, 34, 12, 0.14) 62%, rgba(25, 13, 4, 0.34) 100%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(18, 10, 3, 0.22));
+        }
+
+        .wood-swatch--apple {
+            background: url("./images/元檜傑藝.png") center / cover no-repeat;
+            border-color: rgba(255, 240, 218, 0.16);
+            box-shadow:
+                0 14px 34px rgba(56, 30, 10, 0.18),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
+            padding-right: 118px;
+        }
+
+        .wood-swatch--apple::before {
+            background:
+                linear-gradient(135deg, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.2) 38%, rgba(0, 0, 0, 0.12) 64%, rgba(0, 0, 0, 0.28) 100%),
+                radial-gradient(circle at 78% 18%, rgba(0, 0, 0, 0.18), transparent 0 6rem),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(18, 10, 3, 0.14));
+        }
+
+        .wood-swatch--mid {
+            background:
+                repeating-linear-gradient(98deg, rgba(255, 255, 255, 0.06) 0 10px, rgba(152, 104, 62, 0.18) 10px 22px, rgba(77, 45, 20, 0.22) 22px 40px),
+                linear-gradient(135deg, #6f4723, #9b6a3d);
+        }
+
+        .wood-swatch--dark {
+            background:
+                repeating-linear-gradient(98deg, rgba(255, 255, 255, 0.04) 0 10px, rgba(139, 97, 60, 0.14) 10px 22px, rgba(51, 29, 15, 0.24) 22px 40px),
+                linear-gradient(135deg, #3f2715, #6c4223);
+        }
+
+        /* 卡片角落裝飾物件 */
+        .wood-swatch-object {
+            position: absolute;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            transition:
+                opacity 0.35s ease,
+                transform 0.35s ease,
+                filter 0.35s ease;
+        }
+
+        /* 第一張卡片：黃檜金蘋果 */
+        .wood-swatch--apple .wood-swatch-object--apple {
+            top: -12px;
+            right: 16px;
+            width: 108px;
+            opacity: 0.32;
+            filter: blur(0.5px) saturate(0.94) brightness(0.97);
+            transform: scale(1);
+        }
+
+        /* hover：蘋果亮起、卡片浮起 */
+        .wood-swatch--apple:hover .wood-swatch-object--apple {
+            opacity: 0.9;
+            filter: blur(0) saturate(1.02) brightness(1.04);
+            transform: scale(1.05);
+        }
+
+        .nav-hub {
+            display: grid;
+            grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.15fr);
+            gap: 24px;
+            align-items: center;
+            padding: 20px 0 10px;
+        }
+
+        .nav-hub-copy h2 {
+            margin: 0;
+            font-size: clamp(1.5rem, 2.4vw, 2.3rem);
+            letter-spacing: 0.08em;
+            color: #2c1c10;
+        }
+
+        .nav-hub-copy p {
+            margin: 12px 0 0;
+            color: rgba(44, 28, 16, 0.66);
+            line-height: 1.85;
+            font-size: 0.96rem;
+            max-width: 24rem;
+        }
+
+        .nav-hub-links {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .nav-hub-link {
+            min-height: 108px;
+            padding: 18px;
+            border-radius: 24px;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.56);
+            border: 1px solid rgba(255, 255, 255, 0.68);
+            box-shadow: 0 18px 36px rgba(34, 25, 18, 0.07);
+            backdrop-filter: blur(12px);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .nav-hub-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 24px 44px rgba(34, 25, 18, 0.12);
+            border-color: rgba(198, 139, 63, 0.3);
+        }
+
+        .nav-hub-no {
+            display: block;
+            font-size: 0.8rem;
+            letter-spacing: 0.18em;
+            color: rgba(198, 139, 63, 0.88);
+            margin-bottom: 14px;
+            font-weight: 800;
+        }
+
+        .nav-hub-link strong,
+        .nav-hub-link span:last-child {
+            display: block;
+        }
+
+        .nav-hub-link strong {
+            font-size: 1.02rem;
+            color: #1f2023;
+            margin-bottom: 6px;
+        }
+
+        .nav-hub-link span:last-child {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: rgba(31, 32, 35, 0.58);
+        }
+
+        .gallery-sections {
+            padding: 26px 0 96px;
+        }
+
+        .expo-section + .expo-section {
+            margin-top: 54px;
+        }
+
+        .expo-panel {
+            position: relative;
+            border-radius: 42px;
+            overflow: hidden;
+            padding: 34px;
+            box-shadow: 0 28px 70px rgba(29, 31, 35, 0.1);
+        }
+
+        .expo-head {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+            gap: 24px;
+            align-items: start;
+            margin-bottom: 28px;
+        }
+
+        .expo-lead h2 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            letter-spacing: 0.06em;
+            line-height: 1.08;
+        }
+
+        .expo-lead p {
+            margin: 14px 0 0;
+            max-width: 42rem;
+            font-size: 1rem;
+            line-height: 1.95;
+        }
+
+        .expo-sidecard {
+            min-height: 100%;
+            padding: 24px;
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            background: rgba(255, 255, 255, 0.46);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
+            backdrop-filter: blur(12px);
+            display: grid;
+            align-content: start;
+            gap: 12px;
+        }
+
+        .expo-side-label {
+            display: inline-flex;
+            width: fit-content;
+            min-height: 30px;
+            align-items: center;
+            padding: 0 10px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(76, 49, 24, 0.8);
+            background: rgba(255, 255, 255, 0.52);
+        }
+
+        .expo-sidecard strong {
+            font-size: 1.28rem;
+            line-height: 1.45;
+        }
+
+        .expo-sidecard p {
+            margin: 0;
+            line-height: 1.8;
+            color: inherit;
+        }
+
+        .expo-panel--hinoki {
+            background:
+                radial-gradient(circle at top left, rgba(255, 243, 224, 0.72), transparent 20rem),
+                linear-gradient(180deg, rgba(250, 243, 234, 0.98), rgba(244, 234, 220, 0.98));
+            border: 1px solid rgba(178, 128, 79, 0.18);
+        }
+
+        .expo-panel--hinoki::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(95, 58, 29, 0.06) 0%, transparent 36%),
+                radial-gradient(circle at right 12% top 18%, rgba(192, 144, 96, 0.18), transparent 16rem);
+            pointer-events: none;
+        }
+
+        .expo-panel--hinoki > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hinoki-showcase {
+            display: grid;
+            grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        .hinoki-feature {
+            min-height: 100%;
+            padding: 32px;
+            border-radius: 30px;
+            color: #fff6ea;
+            background:
+                linear-gradient(135deg, rgba(64, 37, 16, 0.98), rgba(104, 69, 36, 0.94) 48%, rgba(164, 114, 60, 0.88) 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .hinoki-feature-label {
+            display: inline-flex;
+            min-height: 32px;
+            align-items: center;
+            padding: 0 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .hinoki-feature h3 {
+            margin: 0;
+            font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+            line-height: 1.2;
+            letter-spacing: 0.05em;
+        }
+
+        .hinoki-feature p {
+            margin: 16px 0 0;
+            color: rgba(255, 244, 228, 0.82);
+            line-height: 1.9;
+        }
+
+        .hinoki-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .hinoki-tags span {
+            display: inline-flex;
+            min-height: 36px;
+            align-items: center;
+            padding: 0 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff8ef;
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        .expo-product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .expo-product-card {
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(111, 78, 46, 0.12);
+        }
+
+        .expo-product-thumb {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ecddc3, #f8f4ee);
+        }
+
+        .expo-product-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .expo-product-badge {
+            position: absolute;
+            left: 14px;
+            top: 14px;
+            display: inline-flex;
+            min-height: 32px;
+            align-items: center;
+            padding: 0 10px;
+            border-radius: 999px;
+            background: rgba(17, 17, 17, 0.66);
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .expo-product-body {
+            padding: 20px;
+        }
+
+        .expo-product-body h3 {
+            margin: 0 0 10px;
+            font-size: 1.08rem;
+            line-height: 1.5;
+            color: #2e1f12;
+        }
+
+        .expo-product-body p {
+            margin: 0 0 18px;
+            color: rgba(46, 31, 18, 0.68);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .expo-panel--cutting {
+            color: #eef4fb;
+            background:
+                radial-gradient(circle at top right, rgba(134, 170, 205, 0.22), transparent 22rem),
+                linear-gradient(180deg, rgba(20, 27, 34, 0.98), rgba(34, 41, 49, 0.98));
+            border: 1px solid rgba(193, 221, 244, 0.12);
+        }
+
+        .expo-panel--cutting::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 34px 34px;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .expo-panel--cutting > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .expo-panel--cutting .expo-lead p,
+        .expo-panel--cutting .expo-sidecard p,
+        .expo-panel--cutting .cutting-card p,
+        .expo-panel--cutting .cutting-step span {
+            color: rgba(238, 244, 251, 0.76);
+        }
+
+        .expo-sidecard--dark {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(193, 221, 244, 0.12);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .expo-sidecard--dark .expo-side-label {
+            color: #d4e6f4;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .cutting-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+            gap: 24px;
+        }
+
+        .cutting-services {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .cutting-card {
+            padding: 24px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(193, 221, 244, 0.12);
+        }
+
+        .cutting-card h3 {
+            margin: 16px 0 10px;
+            font-size: 1.12rem;
+            color: #ffffff;
+        }
+
+        .cutting-process {
+            padding: 24px;
+            border-radius: 28px;
+            border: 1px solid rgba(193, 221, 244, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .cutting-process-head span {
+            display: inline-flex;
+            margin-bottom: 10px;
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #bfdaf0;
+            font-weight: 800;
+        }
+
+        .cutting-process-head strong {
+            display: block;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 18px;
+        }
+
+        .cutting-process-steps {
+            display: grid;
+            gap: 12px;
+        }
+
+        .cutting-step {
+            padding: 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(193, 221, 244, 0.1);
+        }
+
+        .cutting-step em {
+            display: inline-flex;
+            font-style: normal;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            color: #bfdaf0;
+            margin-bottom: 8px;
+        }
+
+        .cutting-step strong,
+        .acrylic-card h3,
+        .contact-action-card strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .expo-panel--acrylic {
+            background:
+                radial-gradient(circle at left 10% top 22%, rgba(147, 214, 255, 0.26), transparent 18rem),
+                linear-gradient(180deg, rgba(250, 254, 255, 0.98), rgba(236, 245, 255, 0.98));
+            border: 1px solid rgba(132, 189, 232, 0.18);
+        }
+
+        .expo-panel--acrylic::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(120deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.06) 36%, rgba(173, 218, 255, 0.2) 60%, rgba(255, 255, 255, 0.44) 100%);
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+
+        .expo-panel--acrylic > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .expo-sidecard--glass {
+            background: rgba(255, 255, 255, 0.54);
+            border-color: rgba(132, 189, 232, 0.22);
+        }
+
+        .expo-sidecard--glass .expo-side-label {
+            color: #4e80cc;
+            background: rgba(95, 143, 230, 0.12);
+        }
+
+        .acrylic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .acrylic-card {
+            min-height: 250px;
+            padding: 24px;
+            border-radius: 26px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.42));
+            border: 1px solid rgba(132, 189, 232, 0.18);
+            backdrop-filter: blur(14px);
+        }
+
+        .acrylic-card p,
+        .contact-action-card p {
+            margin: 0;
+            line-height: 1.85;
+            color: rgba(36, 56, 73, 0.7);
+        }
+
+        .expo-section--contact {
+            padding-bottom: 18px;
+        }
+
+        .contact-band {
+            padding: 32px;
+            border-radius: 34px;
+            background:
+                linear-gradient(135deg, rgba(30, 21, 15, 0.96), rgba(66, 46, 29, 0.94) 46%, rgba(190, 145, 92, 0.84));
+            color: #fff4e9;
+            box-shadow: 0 28px 70px rgba(29, 31, 35, 0.14);
+        }
+
+        .contact-band-copy h2 {
+            margin: 0;
+            font-size: clamp(1.9rem, 3vw, 3rem);
+            letter-spacing: 0.05em;
+        }
+
+        .contact-band-copy p {
+            margin: 14px 0 0;
+            max-width: 48rem;
+            line-height: 1.9;
+            color: rgba(255, 241, 224, 0.84);
+        }
+
+        .contact-band-actions {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .contact-action-card {
+            display: block;
+            padding: 24px;
+            border-radius: 24px;
+            text-decoration: none;
+            background: rgba(255, 248, 238, 0.14);
+            border: 1px solid rgba(255, 241, 224, 0.2);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .contact-action-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 248, 238, 0.2);
+            box-shadow: 0 20px 36px rgba(25, 16, 9, 0.18);
+        }
+
+        .contact-action-card span {
+            display: inline-flex;
+            min-height: 30px;
+            align-items: center;
+            padding: 0 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 244, 233, 0.76);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .contact-action-card strong {
+            font-size: 1.16rem;
+            color: #ffffff;
+        }
+
+        .contact-action-card p {
+            color: rgba(255, 242, 228, 0.84);
+        }
+
+        @media (max-width: 1080px) {
+            .gallery-hero-grid,
+            .hero-wood-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-hub,
+            .expo-head,
+            .hinoki-showcase,
+            .cutting-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-hub-links,
+            .expo-product-grid,
+            .cutting-services,
+            .acrylic-grid,
+            .contact-band-actions {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .gallery-hero-grid,
+            .hero-wood-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-copy,
+            .intro-card,
+            .section-card {
+                border-radius: 24px;
+            }
+
+            .hero-copy,
+            .intro-card,
+            .section-card {
+                padding: 22px;
+            }
+
+            .hero-copy {
+                padding: 24px 0 28px;
+            }
+
+            .hero-actions {
+                gap: 10px;
+            }
+
+            .hero-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .gallery-shell {
+                width: min(1240px, calc(100vw - 20px));
+            }
+
+            .gallery-hero {
+                min-height: 100svh;
+                padding: 92px 0 44px;
+            }
+
+            .nav-hub-links,
+            .expo-product-grid,
+            .cutting-services,
+            .acrylic-grid,
+            .contact-band-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .expo-panel,
+            .contact-band {
+                padding: 24px;
+                border-radius: 28px;
+            }
+
+            .nav-hub-link,
+            .expo-sidecard,
+            .hinoki-feature,
+            .cutting-card,
+            .cutting-process,
+            .acrylic-card,
+            .contact-action-card {
+                border-radius: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div data-fj-navbar data-root="."></div>
+
+    <main class="gallery-page">
+        <section class="gallery-hero">
+            <div class="gallery-hero-media" aria-hidden="true"></div>
+            <div class="gallery-shell">
+                <div class="gallery-hero-grid">
+                    <article class="hero-copy">
+                        <div class="eyebrow">Craft Benefit Shop</div>
+                        <h1>職人工藝館</h1>
+                        <p>
+                            集合職人選品、客製裁切與壓克力應用的展示頁。這裡不是傳統工程案例，而是讓業主、品牌端與一般消費者都能更快速找到對應商品、材料與客製服務。
+                        </p>
+                        <div class="hero-meta-row">
+                            <span class="hero-meta-pill">原木選品門面</span>
+                            <span class="hero-meta-pill">客製加工導覽</span>
+                            <span class="hero-meta-pill">透明展示應用</span>
+                        </div>
+                        <div class="hero-wood-strip">
+                            <a href="#hinoki" class="wood-swatch wood-swatch--light wood-swatch--apple" aria-label="元檜傑藝｜精品中心：原木選品、香氛器物與收藏型工藝品快速入口">
+                                <img src="./images/黃檜金蘋果.png" alt="" class="wood-swatch-object wood-swatch-object--apple">
+                                <strong>元檜傑藝｜精品中心</strong>
+                                <span>原木選品、香氛器物與收藏型工藝品快速入口</span>
+                            </a>
+                            <a href="#cutting" class="wood-swatch wood-swatch--mid">
+                                <strong>職人裁切</strong>
+                                <span>板材裁切、尺寸客製與加工討論的工坊型導覽</span>
+                            </a>
+                            <a href="#acrylic" class="wood-swatch wood-swatch--dark">
+                                <strong>壓克力商品</strong>
+                                <span>透明展示、盒體收納與品牌陳列應用專區</span>
+                            </a>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="#hinoki" class="hero-btn primary">瀏覽三大分區</a>
+                            <a href="#contact-entry" class="hero-btn secondary">看如何下單與詢價</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-intro">
+            <div class="gallery-shell">
+                <div class="nav-hub">
+                    <div class="nav-hub-copy">
+                        <div class="eyebrow">Quick Navigation</div>
+                        <h2>展區索引</h2>
+                        <p>先看展區，再決定要進賣場、看客製方式，或直接整理需求進入詢價。</p>
+                    </div>
+                    <div class="nav-hub-links">
+                        <a href="#hinoki" class="nav-hub-link">
+                            <span class="nav-hub-no">01</span>
+                            <strong>元檜傑藝</strong>
+                            <span>精品中心</span>
+                        </a>
+                        <a href="#cutting" class="nav-hub-link">
+                            <span class="nav-hub-no">02</span>
+                            <strong>職人裁切</strong>
+                            <span>工坊展區</span>
+                        </a>
+                        <a href="#acrylic" class="nav-hub-link">
+                            <span class="nav-hub-no">03</span>
+                            <strong>壓克力商品</strong>
+                            <span>透明應用</span>
+                        </a>
+                        <a href="#contact-entry" class="nav-hub-link">
+                            <span class="nav-hub-no">04</span>
+                            <strong>下單與詢價</strong>
+                            <span>行動入口</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-sections">
+            <section id="hinoki" class="expo-section expo-section--hinoki">
+                <div class="gallery-shell">
+                    <div class="expo-panel expo-panel--hinoki">
+                        <div class="expo-head">
+                            <div class="expo-lead">
+                                <div class="eyebrow">Section 01</div>
+                                <h2>元檜傑藝｜精品中心</h2>
+                                <p>以台灣檜木為主軸，把香氛、茶席與收藏器物整合成一個更安靜、更有層次的選品展區。這裡不是把商品整排列出，而是先讓人感受到材質與工藝價值，再進入細節。</p>
+                            </div>
+                            <div class="expo-sidecard">
+                                <span class="expo-side-label">Featured Note</span>
+                                <strong>保留原木香氣與收藏感</strong>
+                                <p>適合禮贈、空間陳設、接待桌面與生活收藏，讓器物本身成為門面的一部分。</p>
+                                <a class="section-action" href="https://shopee.tw/rockrock1215?categoryId=100636&entryPoint=ShopByPDP&itemId=54206200747" target="_blank" rel="noopener noreferrer">前往元檜傑藝賣場</a>
+                            </div>
+                        </div>
+
+                        <div class="hinoki-showcase">
+                            <article class="hinoki-feature">
+                                <span class="hinoki-feature-label">Curated Selection</span>
+                                <h3>從桌上精品到茶席器物，先看氣質，再挑商品。</h3>
+                                <p>每一件作品都以材質紋理、手感曲面與擺放氛圍為重點，不追求大量堆疊，而是建立一種可長期陳列的選品感。</p>
+                                <div class="hinoki-tags">
+                                    <span>天然木紋</span>
+                                    <span>香氛器物</span>
+                                    <span>收藏送禮</span>
+                                </div>
+                            </article>
+                            <div class="expo-product-grid">
+                                <article class="expo-product-card">
+                                    <div class="expo-product-thumb">
+                                        <img src="https://down-tw.img.susercontent.com/file/tw-11134207-7ra0m-mdfdcpoh1xifa1@resize_w900_nl.webp" alt="純正台灣檜木蘋果聞香瓶聚寶盆">
+                                        <span class="expo-product-badge">人氣選品</span>
+                                    </div>
+                                    <div class="expo-product-body">
+                                        <h3>檜木蘋果聞香瓶・聚寶盆系列</h3>
+                                        <p>以黃金比例與手感曲面做出收藏感，適合居家桌飾、開幕禮與日常香氣陪伴。</p>
+                                        <a class="product-link" href="https://shopee.tw/%E7%B4%94%E6%AD%A3%E5%8F%B0%E7%81%A3%E6%AA%9C%E6%9C%A8%E8%98%8B%E6%9E%9C%E8%81%9E%E9%A6%99%E7%93%B6%E8%81%9A%E5%AF%B6%E7%9B%86-%E5%B9%B3%E5%AE%89-%E5%B0%8F%E8%98%8B%E6%9E%9C-%E9%87%91%E8%98%8B%E6%9E%9C-%E9%BB%83%E9%87%91%E6%AF%94%E4%BE%8B%E6%9C%80%E8%B6%85%E5%80%BC-i.18011186.2211460664?extraParams=%7B%22display_model_id%22%3A72488369400%2C%22model_selection_logic%22%3A3%7D" target="_blank" rel="noopener noreferrer">查看商品</a>
+                                    </div>
+                                </article>
+
+                                <article class="expo-product-card">
+                                    <div class="expo-product-thumb">
+                                        <img src="https://down-tw.img.susercontent.com/file/8eeec21b816ccbe6dcc59dfe2a80e3ad@resize_w900_nl.webp" alt="台灣紅檜檜木香氛手機擴音座">
+                                        <span class="expo-product-badge">桌上精品</span>
+                                    </div>
+                                    <div class="expo-product-body">
+                                        <h3>檜木香氛手機擴音座</h3>
+                                        <p>把木作香氣、聲音擴散與桌面收納感放在同一件作品裡，兼具實用與展示價值。</p>
+                                        <a class="product-link" href="https://shopee.tw/%E5%8F%B0%E7%81%A3%E7%B4%85%E6%AA%9CMeniki%E6%AA%9C%E6%9C%A8%E9%A6%99%E6%B0%9B%E6%89%8B%E6%A9%9F%E6%93%B4%E9%9F%B3%E5%BA%A7-i.18011186.2116430017?extraParams=%7B%22display_model_id%22%3A72488339790%2C%22model_selection_logic%22%3A3%7D" target="_blank" rel="noopener noreferrer">查看商品</a>
+                                    </div>
+                                </article>
+
+                                <article class="expo-product-card">
+                                    <div class="expo-product-thumb">
+                                        <img src="https://down-tw.img.susercontent.com/file/tw-11134207-820l4-mkogzkksrjls71@resize_w900_nl.webp" alt="台灣黃檜限量茶盤">
+                                        <span class="expo-product-badge">收藏器物</span>
+                                    </div>
+                                    <div class="expo-product-body">
+                                        <h3>黃檜限量茶盤</h3>
+                                        <p>適合茶席、接待空間與生活收藏，讓木紋層次與使用痕跡一起形成作品個性。</p>
+                                        <a class="product-link" href="https://shopee.tw/%E5%8F%B0%E7%81%A3%E9%BB%83%E6%AA%9CHinoki%E9%99%90%E9%87%8F%E8%8C%B6%E7%9B%A4-i.18011186.54206200747?extraParams=%7B%22display_model_id%22%3A365562729541%2C%22model_selection_logic%22%3A3%7D" target="_blank" rel="noopener noreferrer">查看商品</a>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cutting" class="expo-section expo-section--cutting">
+                <div class="gallery-shell">
+                    <div class="expo-panel expo-panel--cutting">
+                        <div class="expo-head">
+                            <div class="expo-lead">
+                                <div class="eyebrow">Section 02</div>
+                                <h2>職人裁切</h2>
+                                <p>這裡不主打大量商品，而是主打「可客製、可討論、可依用途調整」的工坊服務。先理解需求，再把材料、尺寸與加工方式整理成可執行規格。</p>
+                            </div>
+                            <div class="expo-sidecard expo-sidecard--dark">
+                                <span class="expo-side-label">Workshop Flow</span>
+                                <strong>從需求描述到材料落地</strong>
+                                <p>適合板材、層板、桌板、門片與異形加工等客製需求，讓訂製流程更直覺。</p>
+                                <a class="section-action" href="#contact-entry">我要詢價裁切</a>
+                            </div>
+                        </div>
+
+                        <div class="cutting-layout">
+                            <div class="cutting-services">
+                                <article class="cutting-card">
+                                    <span class="service-pill">板材裁切</span>
+                                    <h3>居家櫃體與桌板尺寸客製</h3>
+                                    <p>依空間尺寸與使用情境規劃裁切範圍，適合層板、桌面、平台、櫃體門片與補板需求。</p>
+                                </article>
+                                <article class="cutting-card">
+                                    <span class="service-pill">異形加工</span>
+                                    <h3>孔位、轉角與特殊收邊處理</h3>
+                                    <p>針對現場條件複雜的需求，可進一步討論開孔、導角、包柱收邊與局部修飾等加工方式。</p>
+                                </article>
+                                <article class="cutting-card">
+                                    <span class="service-pill">整合提案</span>
+                                    <h3>從材料挑選到下單一次整理</h3>
+                                    <p>若你不確定該用什麼材料、尺寸怎麼抓，也可以先描述用途與風格，我們協助整理成可執行規格。</p>
+                                </article>
+                            </div>
+
+                            <div class="cutting-process">
+                                <div class="cutting-process-head">
+                                    <span>Process</span>
+                                    <strong>裁切流程</strong>
+                                </div>
+                                <div class="cutting-process-steps">
+                                    <div class="cutting-step">
+                                        <em>01</em>
+                                        <strong>提供需求</strong>
+                                        <span>傳尺寸、用途、現場照片或草圖。</span>
+                                    </div>
+                                    <div class="cutting-step">
+                                        <em>02</em>
+                                        <strong>確認材料</strong>
+                                        <span>選板材、厚度、顏色與加工方式。</span>
+                                    </div>
+                                    <div class="cutting-step">
+                                        <em>03</em>
+                                        <strong>報價與排程</strong>
+                                        <span>依內容回覆估價與可施作時間。</span>
+                                    </div>
+                                    <div class="cutting-step">
+                                        <em>04</em>
+                                        <strong>製作交付</strong>
+                                        <span>完成後安排交件或後續延伸加工。</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="acrylic" class="expo-section expo-section--acrylic">
+                <div class="gallery-shell">
+                    <div class="expo-panel expo-panel--acrylic">
+                        <div class="expo-head">
+                            <div class="expo-lead">
+                                <div class="eyebrow">Section 03</div>
+                                <h2>壓克力商品</h2>
+                                <p>把透明材質從單純配件變成展示語言。從品牌陳列、收藏展示到空間配件，重點是讓內容更清楚、視覺更乾淨。</p>
+                            </div>
+                            <div class="expo-sidecard expo-sidecard--glass">
+                                <span class="expo-side-label">Clear Display</span>
+                                <strong>展示、收納與空間識別都能延伸</strong>
+                                <p>適合門市品牌、工作室、展場與居家收藏，把透明層次做得乾淨俐落。</p>
+                                <a class="section-action" href="#contact-entry">洽詢壓克力客製</a>
+                            </div>
+                        </div>
+
+                        <div class="acrylic-grid">
+                            <article class="acrylic-card">
+                                <span class="service-pill">展示系列</span>
+                                <h3>商品立架與品牌展示牌</h3>
+                                <p>可用於桌面陳列、櫃檯標示、活動展示與品牌價格資訊，讓資訊呈現更俐落清楚。</p>
+                            </article>
+                            <article class="acrylic-card">
+                                <span class="service-pill">收納系列</span>
+                                <h3>盒體、隔板與收藏展示罩</h3>
+                                <p>針對公仔、模型、精品、器物或桌面小物做尺寸客製，兼顧保護、陳列與清潔便利性。</p>
+                            </article>
+                            <article class="acrylic-card">
+                                <span class="service-pill">空間配件</span>
+                                <h3>指示牌、面板與功能配件</h3>
+                                <p>可應用於室內導引、牆面資訊牌、收納盒配件與設備周邊，做出乾淨且專業的視覺感。</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact-entry" class="expo-section expo-section--contact">
+                <div class="gallery-shell">
+                    <div class="contact-band">
+                        <div class="contact-band-copy">
+                            <div class="eyebrow">Order & Contact</div>
+                            <h2>如何下單與詢價</h2>
+                            <p>若你已經知道要買哪一類商品，可以直接進對應賣場；若你需要客製尺寸、圖面討論或整合提案，建議整理需求後直接聯絡我們，會更快。</p>
+                        </div>
+                        <div class="contact-band-actions">
+                            <a class="contact-action-card" href="https://shopee.tw/rockrock1215?categoryId=100636&entryPoint=ShopByPDP&itemId=54206200747" target="_blank" rel="noopener noreferrer">
+                                <span>精品中心</span>
+                                <strong>前往元檜傑藝賣場</strong>
+                                <p>直接瀏覽現貨與收藏型商品。</p>
+                            </a>
+                            <a class="contact-action-card" href="tel:0978798915">
+                                <span>裁切訂製</span>
+                                <strong>直接來電討論</strong>
+                                <p>適合尺寸、用途與材料都要一起確認的需求。</p>
+                            </a>
+                            <a class="contact-action-card" href="./index.html#quote">
+                                <span>壓克力客製</span>
+                                <strong>填寫線上需求</strong>
+                                <p>整理尺寸、數量與方向後快速進入洽談。</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <div data-fj-footer data-root="."></div>
+
+    <script src="./shared/navbar.js"></script>
+    <script src="./shared/footer.js"></script>
+</body>
+</html>

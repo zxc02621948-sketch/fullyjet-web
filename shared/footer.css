@@ -32,8 +32,9 @@ html {
 .fj-footer h4 {
     margin: 0 0 24px;
     color: #fff;
-    font-size: 10px;
-    letter-spacing: 0.3em;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
@@ -51,8 +52,9 @@ html {
 
 .fj-footer-tagline {
     color: #c8a870;
-    font-size: 12px;
-    letter-spacing: 0.18em;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    font-weight: 600;
     margin-bottom: 28px !important;
 }
 
@@ -63,9 +65,10 @@ html {
     text-decoration: none;
     border: 1px solid #c8a870;
     color: #c8a870;
-    padding: 10px 16px;
-    font-size: 12px;
+    padding: 12px 20px;
+    font-size: 15px;
     letter-spacing: 0.12em;
+    font-weight: 600;
     transition: all 0.25s ease;
 }
 
